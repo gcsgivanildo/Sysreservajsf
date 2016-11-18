@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.garanhuns.sysreservajsf.entity">
+    <class name="Equipamento" table="equipamento">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+      
+      <property name="nome" column="nome" not-null="true"/>
+      <property name="marca" column="marca" not-null="true"/>
+      <property name="tipo" column="tipo" not-null="true"/>
+      <property name="utilidade" column="utilidade" not-null="true"/>
+      
+      <set name="aulas" table="itemEquipamento">
+        <key column="equipamento_id" />
+        <many-to-many column="aula_id" class="Aula" />
+    </set>
+    </class>
+
+</hibernate-mapping >

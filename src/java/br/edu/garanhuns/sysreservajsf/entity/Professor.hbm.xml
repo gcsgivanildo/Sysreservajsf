@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping  package="br.edu.garanhuns.sysreservajsf.entity">
+    <class name="Professor" table="professor">
+        <id name="siape" column="siape">
+            <generator class="assigned"/>
+        </id>
+    
+        <property name="nome" column="nome" not-null="true"/>
+        <property name="senha" column="senha" not-null="true"/>
+    
+        <set name="aulas" inverse="true">
+            <key column="professor_id"/>
+            <one-to-many class="Aula"/> 
+        </set>
+    
+    
+    </class>
+</hibernate-mapping>

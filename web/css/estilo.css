@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+.backFundo {
+    background-image: url(../img/ifpeg.png);
+    background-size:100%;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #1b6d85;
+    background-attachment: scroll;
+}
+
+.parallax-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/overaly.png);
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+div#paineis{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+    #formAcesso{
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+
+    #formsCadastros {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+
+    } 
+
+    #camposForm {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        overflow-wrap: break-word;
+    }
+}
+
+#formAcesso{
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+}
+
+#camposForm {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+#camposForm button {
+    width: 100%; 
+}
+

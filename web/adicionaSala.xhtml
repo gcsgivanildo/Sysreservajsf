@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    
+    <ui:composition template="template.xhtml">        
+        <ui:define name="content">
+            
+                <h:form>
+                    <div id="formsCadastros" class="panel panel-info">
+                    <div  class="panel-heading"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cadastro de Salas</div>
+                    <div id="camposForm"><br/>
+                        <p:inputText class="form-control" placeholder="Nome da Sala" required="true" value="#{salaBean.sala.nome}"/><br/>
+                        <p:inputText class="form-control" placeholder="Localização" required="true" value="#{salaBean.sala.localizacao}"/><br/>
+                        <p:inputMask class="form-control" placeholder="Capacidade" required="true" mask="9?999"  value="#{salaBean.sala.capacidade}"/><br/>
+                        <p:inputText class="form-control" placeholder="Tipo de Sala" required="true" value="#{salaBean.sala.tipo}"/><br/>
+                        <p:commandButton class="btn btn-primary" value="Gravar" action="#{salaBean.adicionaSala}"/>
+                    </div>
+                    </div>
+                    
+                </h:form>
+            
+            
+           </ui:define>
+    </ui:composition>  
+</html>
+

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition template="template.xhtml">        
+        <ui:define name="content">
+
+            <h:form>
+                <div id="paineis">
+                    <div class="panel panel-success">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i>Lista de Salas</div>
+                        <div class="panel-body">
+                            <p:dataTable value="#{salaBean.listarSala()}" var="dados" 
+                                         emptyMessage="Nenhuma Sala encontrado" rows="10" 
+                                         paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+
+                                <p:column headerText="ID" style="text-align: center; width: 60px">
+                                    <h:outputText value="#{dados.id}"/>
+                                </p:column>
+
+                                <p:column headerText="NOME SALA">                                    
+                                    <h:outputText value="#{dados.nome}"/>
+                                </p:column>
+
+                                <p:column headerText="LOCALIZAÇÃO">
+                                    <h:outputText value="#{dados.localizacao}"/>
+                                </p:column>
+
+                                <p:column headerText="CAPACIDADE">
+                                    <h:outputText value="#{dados.capacidade}"/>
+                                </p:column> 
+
+                                <p:column headerText="TIPO">
+                                    <h:outputText value="#{dados.tipo}"/>
+                                </p:column> 
+
+                                <p:column headerText="AÇÕES">
+                                    <h:commandLink value="Remover" action="#{salaBean.removeSala(dados)}"/>
+                                    | <p:commandLink value="Atualizar" action="#{salaBean.carregarSala(dados)}"/>
+                                </p:column>                     
+                            </p:dataTable>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

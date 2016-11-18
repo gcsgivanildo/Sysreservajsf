@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    
+    <ui:composition template="template.xhtml">        
+        <ui:define name="content">
+    
+            <h:form>
+                     <div id="paineis">
+                    <div class="panel panel-success">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i>Lista de Professores</div>
+                        <div class="panel-body">
+                            <p:dataTable value="#{professorBean.listarProfessor()}" var="prof"
+                                         emptyMessage="Nenhum Equipamento encontrado" rows="10" id="table"
+                                         paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+                                <p:column headerText="SIAPE">
+                                    <h:outputText value="#{prof.siape}"/>
+                                </p:column>
+                                
+                                <p:column headerText="NOME">
+                                    <h:outputText value="#{prof.nome}"/>
+                                </p:column>
+                                
+                                <p:column headerText="AÇÕES">
+                                    <h:commandLink value="Remover" action="#{professorBean.removeProfessor(prof)}"/>
+                                    | <p:commandLink value="Atualizar" action="#{professorBean.carregarProfessor(prof)}"/>
+                                </p:column>
+                            
+                            </p:dataTable>
+                                         
+                        </div>
+                    </div>
+                     </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
