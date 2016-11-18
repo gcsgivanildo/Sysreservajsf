@@ -50,48 +50,27 @@ private Connection connection;
         return list;
     }
 
-    public static boolean addProfessor(Professor p) {
+    public void addProfessor(Professor p) {
         
-          if (sessao == null) {
+          
+        try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-        }
-        if (sessao != null) {
-            try {
-                //criptografa a senha
-                try {
-                    MessageDigest md5 = MessageDigest.getInstance("MD5");
+            trans = sessao.beginTransaction();
+            try{
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
                     BigInteger senhaCriptografada = new BigInteger(1, md5.digest(p.getSenha().getBytes()));
                     p.setSenha(senhaCriptografada.toString(16));
-                } catch (NoSuchAlgorithmException e) {
+            }  catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
-                }
-                               
-                //atribuir data
-                sessao.beginTransaction();
-                sessao.save(p);
-                sessao.getTransaction().commit();
-                sessao.flush();
-                sessao.clear();
-                return true;
-                
-                
-            } catch (Exception e) {
-                sessao.getTransaction().rollback();
-                return false;
-            }
+                }  
+            sessao.merge(p);
+            trans.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sessao.close();
         }
-        return false;
-//        try {
-//            sessao = HibernateUtil.getSessionFactory().openSession();
-//            trans = sessao.beginTransaction();
-//            sessao.merge(p);
-//            trans.commit();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            sessao.close();
-//        }
     }
 
 //    public void removeProfessor(Professor eq) {

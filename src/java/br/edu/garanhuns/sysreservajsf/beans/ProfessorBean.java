@@ -35,7 +35,7 @@ public class ProfessorBean {
     }
     
     public String adicionaProfessor(){
-        ProfessorDao.addProfessor(professor);
+        professorDao.addProfessor(professor);
 //        this.professor.setSiape(Integer.parseInt(null));
 //        this.professor.setNome(null);
 //        this.professor.setSenha(null);
