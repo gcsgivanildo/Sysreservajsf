@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition template="template.xhtml">        
+        <ui:define name="content">
+
+            <h:form>
+                <div id="formsCadastros" class="panel panel-info">
+                    <div  class="panel-heading"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cadastro de Aulas</div>
+                    <div id="camposForm"><br/>
+
+                       
+                        <p:calendar id="digdat" value="#{aulaBean.aula.data}" placeholder="Data da aula"
+                                    effect="fadeIn" pattern="dd/MM/yyyy"
+                                    required="true" requiredMessage="A Data deve ser preenchida." timeZone="GMT-3" locale="pt_BR"/>
+
+                        <br/><br/>
+
+                        
+                        <p:inputMask class="form-control" placeholder="Hora da aula" required="true" mask="99:99"  id="time" value="#{aulaBean.aula.hora}">
+                            <f:convertDateTime pattern="HH:mm" timeZone="GMT-3" locale="pt_BR" />
+                        </p:inputMask><br/>
+
+                        <p:inputMask class="form-control" placeholder="Duração da Aula" mask="9?99999"  value="#{aulaBean.aula.duracao}"/><br/>
+
+                        <p:selectOneMenu value="#{aulaBean.aula.professor}">
+                            <f:selectItem class="form-control" itemValue="null" itemLabel="Selecione o Professor" />
+                            <f:selectItems class="form-control" value="#{professorBean.listarProfessor()}" var="p" itemValue="#{p.siape}" itemLabel="#{p.nome}" />
+                        </p:selectOneMenu>
+                        <br/><br/>
+                        <p:selectOneMenu value="#{aulaBean.aula.sala}">
+                            <f:selectItem class="form-control" itemValue="null" itemLabel="Selecione a Sala" />
+                            <f:selectItems class="form-control" value="#{salaBean.listarSala()}" var="s" itemValue="#{s.id}" itemLabel="#{s.nome}" />
+                        </p:selectOneMenu><br/>
+
+                        <p:commandButton class="btn btn-primary" value="Gravar" action="#{aulaBean.adicionaAula}"/>
+
+                    </div>
+                </div>
+
+            </h:form>
+
+
+        </ui:define>
+    </ui:composition>  
+</html>
+

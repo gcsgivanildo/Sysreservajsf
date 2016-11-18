@@ -14,9 +14,9 @@
                 <div id="paineis">
                     <div class="panel panel-success">
                         <!-- Default panel contents -->
-                        <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i>Lista de Reservas</div>
+                        <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i>Lista de Aulas</div>
                         <div class="panel-body">
-                            <p:dataTable value="#{reservaBean.listarReserva()}" var="dados" 
+                            <p:dataTable value="#{aulaBean.listarAula()}" var="dados" 
                                          emptyMessage="Nenhuma reserva encontrada" rows="10" 
                                          paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 
@@ -36,13 +36,15 @@
                                     <h:outputText value="#{dados.duracao}"/>
                                 </p:column> 
 
-                                <p:column headerText="idSIAPE">
-                                    <h:outputText value="#{dados.professor_id}"/>
+                                <p:column headerText="PROFESSOR">
+                                    <h:outputText value="#{dados.professor.getNome()}"/>
                                 </p:column> 
                                 
-                                <p:column headerText="idSALA">
-                                    <h:outputText value="#{dados.sala_id}"/>
+                                <p:column headerText="SALA">
+                                    <h:outputText value="#{dados.sala.getNome()}"/>
                                 </p:column> 
+                                
+                                
                                 
                                 <p:column headerText="AÇÕES">
                                     <h:commandLink value="Remover" action="#{equipamentoBean.removeEquipamento(dados)}"/>

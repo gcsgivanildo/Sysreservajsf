@@ -5,33 +5,46 @@
       xmlns:p="http://primefaces.org/ui"      
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-    
-    
+
+
     <ui:composition template="template.xhtml">        
         <ui:define name="content">
-            
-                <h:form>
-                    <div id="formsCadastros" class="panel panel-info">
+
+            <h:form id="formProfessor">
+                <div id="formsCadastros" class="panel panel-info">
                     <div  class="panel-heading"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cadastro de Professores</div>
                     <div id="camposForm"><br/>
-                        
+
                         <p:outputLabel value="SIAPE"/> 
                         <p:inputMask class="form-control"  required="true" mask="9?99999"  value="#{professorBean.professor.siape}"/>
-                       <br/>
+                        <br/>
                         <p:outputLabel value="Nome do Professor"/> 
-                        <p:inputText class="form-control"  required="true" value="#{professorBean.professor.nome}"/><br/>
+                        <p:inputText class="form-control"  required="true" value="#{professorBean.professor.nome}" requiredMessage="O nome é obrigatório"/><br/>
                         <p:outputLabel value="Senha"/> 
-                        <h:inputSecret class="form-control"  required="true" value="#{professorBean.professor.senha}"/><br/>
+                        <p:password class="form-control"  required="true" value="#{professorBean.professor.senha}"/><br/>
                         <p:outputLabel value="Confirmar Senha"/> 
-                        <h:inputSecret class="form-control"  required="true" /><br/>
-                        <p:commandButton class="btn btn-primary" value="Gravar" action="#{professorBean.adicionaProfessor}"/>
+                        <p:password class="form-control"  id="passConfirma" value="#{confirma}"/><br/>
+                        <p:commandButton class="btn btn-primary" value="Gravar" oncomplete="PF('widDialCadSetor').show()" />
+                        <p:message for="passConfirma"/>
                     </div>
-                    </div>
-                    
+                </div>
+
+            </h:form>
+
+            <p:confirmDialog id="dialCadSetor" visible="false" widgetVar="widDialCadSetor"
+                             message="Deseja realmente cadastrar este Professor?">
+                <h:form>
+                    <f:facet name="header">
+                        Cadastro de Professor
+                    </f:facet>
+
+                    <p:commandButton value="sim" action="#{professorBean.adicionaProfessor}"
+                                     oncomplete="PF('widDialCadSetor').hide()" update=":formProfessor " process=":formProfessor @this" />
+                    <p:commandButton value="não"  oncomplete="PF('widDialCadSetor').hide()" />
                 </h:form>
-            
-            
-           </ui:define>
+            </p:confirmDialog>
+
+        </ui:define>
     </ui:composition>  
 </html>
 
