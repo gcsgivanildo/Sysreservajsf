@@ -33,18 +33,18 @@ public class Teste {
         a.setId(2);
         session.delete(a);
         
-//        Professor p = new Professor();
-//        p.setSiape(11);
-//        session.delete(p);
-//        
-//        Sala s = new Sala();
-//        s.setNome("s1");
-//        s.setCapacidade(32);
-//        s.setLocalizacao("l1");
-//        s.setTipo("t1");
-//        session.save(s);
-//        
-//        
+        Professor p = new Professor();
+        p.setSiape(11);
+        session.delete(p);
+        
+        Sala s = new Sala();
+        s.setNome("s1");
+        s.setCapacidade(32);
+        s.setLocalizacao("l1");
+        s.setTipo("t1");
+        session.save(s);
+        
+        
 
 //        session.save(a);
 //        
